@@ -1,0 +1,165 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import FloralBackground from "../../components/FloralBackground.astro";
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const testimonials = [
+    {
+        name: "Client Name",
+        role: "Profession",
+        img: "/img/testimonial-1.jpg",
+        text: t('testimonials.text'),
+    },
+    {
+        name: "Client Name",
+        role: "Profession",
+        img: "/img/testimonial-2.jpg",
+        text: t('testimonials.text'),
+    },
+    {
+        name: "Client Name",
+        role: "Profession",
+        img: "/img/testimonial-3.jpg",
+        text: t('testimonials.text'),
+    },
+    {
+        name: "Client Name",
+        role: "Profession",
+        img: "/img/testimonial-4.jpg",
+        text: t('testimonials.text'),
+    },
+];
+---
+
+<MainLayout title={t('testimonials.title') + " - 360 Events Films"}>
+    <section class="page-header">
+        <div class="container">
+            <h1>{t('testimonials.title')}</h1>
+            <p>{t('testimonials.heading')}</p>
+        </div>
+    </section>
+
+    <section class="testimonial-section section position-relative">
+        <FloralBackground />
+        <div class="container">
+            <div class="testimonial-grid">
+                {
+                    testimonials.map((item) => (
+                        <div class="testimonial-card">
+                            <div class="card-body">
+                                <p class="text">{item.text}</p>
+                                <div class="client-info">
+                                    <img src={item.img} alt={item.name} />
+                                    <div class="info">
+                                        <h4>{item.name}</h4>
+                                        <span>{item.role}</span>
+                                    </div>
+                                </div>
+                                <i class="fas fa-quote-right quote-icon" />
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+</MainLayout>
+
+<style lang="scss">
+    .page-header {
+        background: url("/img/hero-3.jpg") no-repeat center center/cover;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+    }
+
+    .section {
+        padding: 100px 0;
+    }
+
+    .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    .testimonial-card {
+        background: #fff;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        position: relative;
+        transition: transform 0.3s ease;
+        border-bottom: 3px solid transparent;
+
+        &:hover {
+            transform: translateY(-5px);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .text {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            img {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            .info {
+                h4 {
+                    font-size: 1.1rem;
+                    margin-bottom: 5px;
+                }
+                span {
+                    font-size: 0.9rem;
+                    color: var(--primary-color);
+                }
+            }
+        }
+
+        .quote-icon {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            font-size: 3rem;
+            color: rgba(212, 175, 55, 0.1);
+        }
+    }
+</style>

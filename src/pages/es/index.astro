@@ -1,0 +1,618 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Hero from "../../components/Hero.astro";
+import InfiniteGallery from "../../components/InfiniteGallery.astro";
+import FloralBackground from "../../components/FloralBackground.astro";
+
+import { useTranslations } from "../../i18n/utils";
+
+const t = useTranslations("es");
+
+const services = [
+  {
+    title: "Bodas",
+    icon: "fa-heart",
+    img: "/img/service-1.jpg",
+    desc: "Capturando la magia de tu día especial con elegancia cinematográfica.",
+  },
+  {
+    title: "Retratos",
+    icon: "fa-camera",
+    img: "/img/service-2.jpg",
+    desc: "Retratos profesionales que revelan tu verdadera personalidad y estilo.",
+  },
+  {
+    title: "Moda",
+    icon: "fa-tshirt",
+    img: "/img/service-3.jpg",
+    desc: "Fotografía de moda de alta gama para marcas, modelos y diseñadores.",
+  },
+  {
+    title: "Editorial",
+    icon: "fa-newspaper",
+    img: "/img/service-4.jpg",
+    desc: "Narración a través de imágenes para revistas y publicaciones.",
+  },
+];
+---
+
+<MainLayout title="360 Events Films - Inicio" lang="es">
+  <Hero />
+
+  <section class="about-section section position-relative">
+    <FloralBackground />
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content" data-aos="fade-right">
+          <h4 class="text-primary text-uppercase">{t("about.title")}</h4>
+          <h2 class="section-title">
+            {t("about.heading")}
+          </h2>
+          <p class="lead">
+            {t("about.desc1")}
+          </p>
+          <p>
+            {t("about.desc2")}
+          </p>
+          <div class="features-list">
+            <div class="feature">
+              <i class="fas fa-check"></i>
+              {t("about.feature1")}
+            </div>
+            <div class="feature">
+              <i class="fas fa-check"></i>
+              {t("about.feature2")}
+            </div>
+            <div class="feature">
+              <i class="fas fa-check"></i>
+              {t("about.feature3")}
+            </div>
+          </div>
+          <a href="/es/about" class="btn mt-5">{t("about.readMore")}</a>
+        </div>
+
+        <div class="about-images" data-aos="fade-left">
+          <img src="/img/about-1.jpg" alt="About Us" class="img-1" />
+          <img src="/img/about-2.jpg" alt="About Us" class="img-2" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <InfiniteGallery />
+  </section>
+
+  <section class="services-section section bg-light position-relative">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h4 class="text-primary text-uppercase">{t("services.title")}</h4>
+        <h2 class="section-title">{t("services.heading")}</h2>
+      </div>
+      <div class="services-grid">
+        {
+          services.map((service, index) => (
+            <div
+              class="service-card"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+            >
+              <div class="img-wrapper">
+                <img src={service.img} alt={service.title} />
+                <div class="overlay">
+                  <i class={`fas ${service.icon}`} />
+                </div>
+              </div>
+              <div class="card-content">
+                <h3>{service.title}</h3>
+                <p>{service.desc}</p>
+                <a href="/es/services" class="read-more">
+                  {t("services.learnMore")} <i class="fas fa-arrow-right" />
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section section">
+    <video autoplay muted loop playsinline class="contact-video">
+      <source src="/video/VALERIE Y JOHN.webm" type="video/mp4" />
+    </video>
+    <FloralBackground />
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6" data-aos="fade-right">
+          <h4 class="text-primary text-uppercase">{t("contact.title")}</h4>
+          <h2 class="section-title">
+            {t("contact.heading")}
+          </h2>
+          <p class="mb-4">
+            {t("contact.desc")}
+          </p>
+          <div class="contact-info">
+            <div class="info-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>{t("contact.address")}</span>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-phone-alt"></i>
+              <span>{t("contact.phone")}</span>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-envelope"></i>
+              <span>{t("contact.email")}</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <form class="contact-form">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder={t("contact.form.name")}
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="email"
+                class="form-control"
+                placeholder={t("contact.form.email")}
+              />
+            </div>
+            <div class="form-group">
+              <textarea
+                class="form-control"
+                rows="4"
+                placeholder={t("contact.form.message")}></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100"
+              >{t("contact.form.send")}</button
+            >
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style lang="scss">
+  .section {
+    padding: var(--spacing-2xl, 80px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bg-light {
+    background: var(--bg-cream, #f9f9f9);
+  }
+
+  .position-relative {
+    position: relative;
+  }
+
+  .text-primary {
+    color: var(--primary-color);
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-size: var(--font-size-sm, 1rem);
+  }
+
+  .section-title {
+    font-size: var(--font-size-3xl, 2.5rem);
+    margin-bottom: var(--spacing-md, 25px);
+    color: var(--text-color);
+    line-height: 1.2;
+  }
+
+  .lead {
+    font-size: var(--font-size-lg, 1.25rem);
+    color: var(--text-light, #444);
+    margin-bottom: var(--spacing-md, 25px);
+    font-weight: 500;
+    line-height: 1.7;
+  }
+
+  .features-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md, 20px);
+    margin-top: var(--spacing-lg, 30px);
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm, 15px);
+      font-size: var(--font-size-base, 1.05rem);
+      min-height: var(--touch-target, 44px);
+
+      i {
+        color: var(--primary-color);
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  /* About Section - Mobile Optimized */
+  .about-section {
+    .about-content {
+      @media (max-width: 991px) {
+        text-align: center;
+      }
+    }
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl, 60px);
+    align-items: center;
+
+    @media (max-width: 991px) {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg, 40px);
+    }
+  }
+
+  .about-images {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    height: clamp(300px, 50vw, 600px);
+    position: relative;
+
+    .img-1 {
+      grid-column: 1 / 9;
+      grid-row: 1 / 10;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--border-radius-sm, 8px);
+      box-shadow: var(--shadow-hover);
+      z-index: 1;
+    }
+
+    .img-2 {
+      grid-column: 6 / -1;
+      grid-row: 5 / -1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--border-radius-sm, 8px);
+      box-shadow: var(--shadow-hover);
+      border: 8px solid var(--white, #fff);
+      z-index: 2;
+
+      @media (max-width: 480px) {
+        border-width: 4px;
+      }
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      width: 150px;
+      height: 150px;
+      border: 2px solid var(--primary-color);
+      z-index: 0;
+      opacity: 0.5;
+
+      @media (max-width: 768px) {
+        width: 100px;
+        height: 100px;
+        top: -10px;
+        left: -10px;
+      }
+    }
+  }
+
+  /* Services Section - Mobile Optimized */
+  .services-section {
+    background-color: var(--bg-cream, #f8f9fa);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: var(--spacing-lg, 30px);
+  }
+
+  .service-card {
+    background: var(--white, #fff);
+    border-radius: var(--border-radius-sm, 15px);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    @media (max-width: 768px) {
+      &:hover {
+        transform: translateY(-5px);
+      }
+    }
+
+    .img-wrapper {
+      position: relative;
+      height: clamp(200px, 30vw, 260px);
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s ease;
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8));
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start;
+        padding: var(--spacing-lg, 30px);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+
+        i {
+          font-size: 2rem;
+          color: var(--primary-color);
+          transform: translateY(20px);
+          transition: transform 0.4s ease;
+        }
+      }
+    }
+
+    &:hover .img-wrapper {
+      img {
+        transform: scale(1.1);
+      }
+      .overlay {
+        opacity: 1;
+        i {
+          transform: translateY(0);
+        }
+      }
+    }
+
+    .card-content {
+      padding: var(--spacing-lg, 30px);
+      text-align: left;
+
+      h3 {
+        margin-bottom: var(--spacing-sm, 15px);
+        font-size: var(--font-size-xl, 1.4rem);
+        font-weight: 600;
+      }
+
+      p {
+        color: var(--text-light, #666);
+        margin-bottom: var(--spacing-md, 25px);
+        line-height: 1.7;
+        font-size: var(--font-size-sm, 0.95rem);
+      }
+
+      .read-more {
+        color: var(--accent-color, var(--primary-color));
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-transform: uppercase;
+        font-size: var(--font-size-xs, 0.85rem);
+        letter-spacing: 1.5px;
+        position: relative;
+        min-height: var(--touch-target, 44px);
+        padding: var(--spacing-xs, 8px) 0;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0%;
+          height: 2px;
+          background: var(--accent-color, var(--primary-color));
+          transition: width 0.3s ease;
+        }
+
+        &:hover,
+        &:focus {
+          gap: 12px;
+          &::after {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  /* Contact Section - Mobile Optimized */
+  .contact-section {
+    position: relative;
+    color: #fff;
+    overflow: hidden;
+
+    .contact-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      object-fit: cover;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 1;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-title {
+      color: #fff;
+    }
+
+    .lead,
+    p {
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  .contact-info {
+    margin-top: var(--spacing-md, 25px);
+    margin-bottom: var(--spacing-md, 25px);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm, 12px);
+
+    @media (max-width: 768px) {
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      i {
+        width: 32px;
+        height: 32px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(5px);
+        color: var(--primary-color);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.85rem;
+        transition: var(--transition);
+        flex-shrink: 0;
+      }
+
+      &:hover i {
+        background: var(--primary-color);
+        color: #fff;
+      }
+
+      span {
+        font-size: var(--font-size-sm, 0.85rem);
+        font-weight: 500;
+        color: #fff;
+      }
+    }
+  }
+
+  .contact-form {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: var(--spacing-xl, 40px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    border-radius: var(--border-radius-sm, 15px);
+    position: relative;
+    overflow: hidden;
+
+    @media (max-width: 480px) {
+      padding: var(--spacing-lg, 25px);
+    }
+
+    .form-group {
+      margin-bottom: var(--spacing-md, 20px);
+      position: relative;
+
+      .form-control {
+        width: 100%;
+        padding: 16px var(--spacing-md, 20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--border-radius-sm, 8px);
+        background: rgba(0, 0, 0, 0.2);
+        color: #fff;
+        transition: var(--transition);
+        font-family: var(--font-primary);
+        font-size: 16px; /* Prevents iOS zoom */
+
+        &:focus {
+          border-color: var(--primary-color);
+          background: rgba(0, 0, 0, 0.4);
+          outline: none;
+        }
+
+        &::placeholder {
+          color: rgba(255, 255, 255, 0.5);
+        }
+      }
+    }
+
+    .btn {
+      width: 100%;
+      margin-top: var(--spacing-sm, 10px);
+      padding: 16px;
+      font-size: var(--font-size-base, 1rem);
+      background: var(--accent-color, var(--primary-color));
+      border: none;
+
+      &:hover,
+      &:focus {
+        background: #fff;
+        color: var(--accent-color, var(--primary-color));
+      }
+    }
+  }
+
+  /* Row Layout for Contact - Mobile Stack */
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl, 60px);
+    align-items: start;
+
+    @media (max-width: 991px) {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg, 40px);
+    }
+  }
+
+  .col-lg-6 {
+    width: 100%;
+  }
+
+  /* Text center utility */
+  .text-center {
+    text-align: center;
+  }
+</style>

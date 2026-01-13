@@ -1,0 +1,147 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h2>360 Events Films</h2>
+        <p>{t("footer.brand")}</p>
+      </div>
+      <div class="footer-links">
+        <h3>{t("footer.quickLinks")}</h3>
+        <ul>
+          <li><a href={`/${lang}/about`}>{t("nav.about")}</a></li>
+          <li><a href={`/${lang}/services`}>{t("nav.services")}</a></li>
+          <li><a href={`/${lang}/contact`}>{t("nav.contact")}</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h3>{t("footer.followUs")}</h3>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a
+          >
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a
+          >
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {currentYear} 360 Events Films. {t("footer.rights")}</p>
+    </div>
+  </div>
+</footer>
+
+<style lang="scss">
+  .footer {
+    background: #111;
+    color: #fff;
+    padding: var(--spacing-xl, 45px) 0 var(--spacing-md, 12px);
+    margin-top: var(--spacing-xl, 35px);
+    padding-bottom: max(var(--spacing-sm, 12px), env(safe-area-inset-bottom));
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+    gap: var(--spacing-lg, 25px);
+    margin-bottom: var(--spacing-md, 25px);
+
+    @media (max-width: 768px) {
+      text-align: center;
+      gap: var(--spacing-md, 18px);
+    }
+  }
+
+  .footer-brand {
+    h2 {
+      color: var(--primary-color);
+      margin-bottom: var(--spacing-sm, 10px);
+      font-size: var(--font-size-xl, 1.2rem);
+    }
+    p {
+      color: #aaa;
+      font-size: var(--font-size-sm, 0.8rem);
+      line-height: 1.5;
+    }
+  }
+
+  .footer-links {
+    h3 {
+      margin-bottom: var(--spacing-sm, 10px);
+      font-size: var(--font-size-base, 0.95rem);
+    }
+    ul li {
+      margin-bottom: 4px;
+
+      a {
+        color: #aaa;
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        padding: 3px 0;
+        font-size: var(--font-size-sm, 0.8rem);
+        transition: color 0.2s ease;
+
+        &:hover,
+        &:focus {
+          color: var(--primary-color);
+        }
+      }
+    }
+  }
+
+  .footer-social {
+    h3 {
+      margin-bottom: var(--spacing-sm, 10px);
+      font-size: var(--font-size-base, 0.95rem);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+
+      @media (max-width: 768px) {
+        justify-content: center;
+      }
+
+      a {
+        width: 32px;
+        height: 32px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 0.9rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        transition: all 0.2s ease;
+
+        &:hover,
+        &:focus {
+          color: #111;
+          background: var(--primary-color);
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    text-align: center;
+    border-top: 1px solid #333;
+    padding-top: var(--spacing-sm, 12px);
+
+    p {
+      color: #666;
+      font-size: var(--font-size-xs, 0.75rem);
+    }
+  }
+</style>

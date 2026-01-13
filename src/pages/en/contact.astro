@@ -1,0 +1,148 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import FloralBackground from "../../components/FloralBackground.astro";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<MainLayout title={t("contact.title") + " - 360 Events Films"}>
+  <section class="page-header">
+    <video autoplay muted loop playsinline class="header-video">
+      <source src="/video/VALERIE Y JOHN.webm" type="video/mp4" />
+    </video>
+    <div class="container">
+      <h1>{t("contact.pageTitle")}</h1>
+      <p>{t("contact.pageHeading")}</p>
+    </div>
+  </section>
+
+  <section class="contact-section section position-relative">
+    <FloralBackground />
+    <div class="container">
+      <div class="row">
+        <div class="col-form">
+          <h2>{t("contact.heading")}</h2>
+          <p>{t("contact.desc")}</p>
+          <form>
+            <input type="text" placeholder={t("contact.form.name")} required />
+            <input
+              type="email"
+              placeholder={t("contact.form.email")}
+              required
+            />
+            <input
+              type="text"
+              placeholder={t("contact.form.subject")}
+              required
+            />
+            <textarea rows="5" placeholder={t("contact.form.message")} required
+            ></textarea>
+            <button type="submit" class="btn btn-primary"
+              >{t("contact.form.send")}</button
+            >
+          </form>
+        </div>
+        <div class="col-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968482413!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes+Square!5e0!3m2!1sen!2sbd!4v1560412335548!5m2!1sen!2sbd"
+            width="100%"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style lang="scss">
+  .page-header {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+
+    .header-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      object-fit: cover;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+  }
+
+  .section {
+    padding: 80px 0;
+  }
+
+  .row {
+    display: flex;
+    gap: 50px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  .col-form,
+  .col-map {
+    flex: 1;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family: inherit;
+
+      &:focus {
+        outline: none;
+        border-color: var(--primary-color);
+      }
+    }
+
+    button {
+      align-self: flex-start;
+    }
+  }
+</style>

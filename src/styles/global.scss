@@ -1,0 +1,309 @@
+/* Global Styles - Floral Minimalist Theme with Mobile 2025 Optimizations */
+:root {
+  /* Color Palette */
+  --primary-color: #c5b89c;
+  --primary-hover: #b5a88c;
+  --accent-color: #8b9a7a;
+  --accent-light: #a8b89a;
+  --text-color: #4a4a4a;
+  --text-light: #6b6b6b;
+  --bg-color: #fdfcfa;
+  --bg-cream: #f8f6f2;
+  --bg-soft: #f5f3ef;
+  --white: #ffffff;
+
+  /* Shadows */
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.1);
+
+  /* Border Radius */
+  --border-radius: 25px;
+  --border-radius-sm: 12px;
+  --border-radius-lg: 35px;
+
+  /* Typography - Compact for mobile */
+  --font-primary: 'Open Sans', sans-serif;
+  --font-secondary: 'Playfair Display', serif;
+
+  --font-size-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.85rem);
+  --font-size-sm: clamp(0.8rem, 0.75rem + 0.3vw, 0.95rem);
+  --font-size-base: clamp(0.875rem, 0.825rem + 0.35vw, 1.05rem);
+  --font-size-lg: clamp(0.95rem, 0.9rem + 0.5vw, 1.2rem);
+  --font-size-xl: clamp(1.05rem, 0.95rem + 0.8vw, 1.5rem);
+  --font-size-2xl: clamp(1.25rem, 1rem + 1.25vw, 2.25rem);
+  --font-size-3xl: clamp(1.5rem, 1.15rem + 1.75vw, 2.75rem);
+  --font-size-4xl: clamp(1.75rem, 1.25rem + 2.5vw, 3.5rem);
+
+  /* Spacing - Fluid */
+  --spacing-xs: clamp(0.4rem, 0.35rem + 0.4vw, 0.65rem);
+  --spacing-sm: clamp(0.6rem, 0.5rem + 0.5vw, 0.85rem);
+  --spacing-md: clamp(0.85rem, 0.7rem + 0.8vw, 1.25rem);
+  --spacing-lg: clamp(1.25rem, 0.9rem + 1.5vw, 2rem);
+  --spacing-xl: clamp(1.75rem, 1.25rem + 2vw, 3.5rem);
+  --spacing-2xl: clamp(2.5rem, 1.75rem + 3vw, 5rem);
+
+  /* Touch Targets */
+  --touch-target: 40px;
+  --touch-target-sm: 36px;
+
+  /* Transitions */
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.2s ease;
+}
+
+/* Base Styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  line-height: 1.6;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-secondary);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+}
+
+h2 {
+  font-size: var(--font-size-3xl);
+}
+
+h3 {
+  font-size: var(--font-size-2xl);
+}
+
+h4 {
+  font-size: var(--font-size-xl);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+  -webkit-tap-highlight-color: transparent;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  width: 100%;
+}
+
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.text-accent {
+  color: var(--accent-color) !important;
+}
+
+.mt-4 {
+  margin-top: var(--spacing-lg);
+}
+
+.mt-5 {
+  margin-top: var(--spacing-xl);
+}
+
+.mb-4 {
+  margin-bottom: var(--spacing-lg);
+}
+
+.mb-5 {
+  margin-bottom: var(--spacing-xl);
+}
+
+section {
+  padding: var(--spacing-2xl) 0;
+}
+
+/* Buttons - Small and Compact for Mobile */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch-target);
+  padding: 10px 22px;
+  background-color: var(--accent-color);
+  color: var(--white);
+  border: 2px solid transparent;
+  border-radius: var(--border-radius);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  box-shadow: var(--shadow-soft);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+
+  &:hover,
+  &:focus {
+    background-color: var(--accent-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    color: var(--white);
+    outline: none;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &.btn-outline {
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    box-shadow: none;
+
+    &:hover,
+    &:focus {
+      background: var(--accent-color);
+      color: var(--white);
+    }
+  }
+
+  &.btn-primary {
+    background-color: var(--primary-color);
+
+    &:hover,
+    &:focus {
+      background-color: var(--primary-hover);
+    }
+  }
+
+  /* Mobile - smaller buttons */
+  @media (max-width: 768px) {
+    min-height: 34px;
+    padding: 7px 16px;
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 480px) {
+    width: auto;
+    min-height: 32px;
+    padding: 6px 14px;
+    font-size: 0.7rem;
+    letter-spacing: 0.2px;
+  }
+}
+
+/* Cards */
+.card {
+  background: var(--white);
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-soft);
+  padding: var(--spacing-lg);
+  transition: var(--transition);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+  }
+}
+
+/* Form Inputs - 16px to prevent iOS zoom */
+input,
+textarea,
+select {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius-sm);
+  padding: 10px var(--spacing-md);
+  font-family: var(--font-primary);
+  font-size: 16px;
+  transition: var(--transition);
+  background: var(--white);
+  -webkit-appearance: none;
+  appearance: none;
+
+  &:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(139, 154, 122, 0.15);
+  }
+
+  &::placeholder {
+    color: var(--text-light);
+  }
+}
+
+textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* Section Titles */
+.section-title {
+  font-size: var(--font-size-3xl);
+  color: var(--text-color);
+  margin-bottom: var(--spacing-md);
+}
+
+.lead {
+  font-size: var(--font-size-lg);
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* Focus visible for accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

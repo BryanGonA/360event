@@ -1,0 +1,136 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import FloralBackground from "../../components/FloralBackground.astro";
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<MainLayout title={t('about.title') + " - 360 Events Films"}>
+  <section class="page-header">
+    <div class="container">
+      <h1>{t('about.title')}</h1>
+      <p>{t('about.heading')}</p>
+    </div>
+  </section>
+
+  <section class="about-section section position-relative">
+    <FloralBackground />
+    <div class="container">
+      <div class="row">
+        <div class="col-img">
+          <div class="img-grid">
+            <img src="/img/about-1.jpg" alt="About 1" />
+            <img src="/img/about-2.jpg" alt="About 2" />
+          </div>
+        </div>
+        <div class="col-text">
+          <h2>{t('about.heading2')}</h2>
+          <p>{t('about.desc1')}</p>
+          <p>{t('about.desc2')}</p>
+          <div class="features-grid">
+            <div class="feature">
+              <i class="fas fa-check"></i> {t('about.feature1')}
+            </div>
+            <div class="feature">
+              <i class="fas fa-check"></i> {t('about.feature2')}
+            </div>
+            <div class="feature">
+              <i class="fas fa-check"></i> {t('about.feature3')}
+            </div>
+          </div>
+          <a href={lang === 'es' ? '/es/contact' : '/en/contact'} class="btn btn-primary mt-4">{t('about.readMore')}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style lang="scss">
+  .page-header {
+    background: url("/img/hero-1.jpg") no-repeat center center/cover;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+  }
+
+  .section {
+    padding: 80px 0;
+  }
+
+  .row {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  .col-img,
+  .col-text {
+    flex: 1;
+  }
+
+  .img-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+
+    img {
+      width: 100%;
+      border-radius: 5px;
+      &:nth-child(2) {
+        transform: translateY(30px);
+      }
+    }
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 30px;
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+
+      i {
+        color: var(--primary-color);
+      }
+    }
+  }
+</style>

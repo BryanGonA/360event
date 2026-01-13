@@ -1,0 +1,49 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import FloralBackground from "../components/FloralBackground.astro";
+---
+
+<MainLayout title="404 - Page Not Found">
+    <section class="error-section section position-relative">
+        <FloralBackground />
+        <div class="container text-center">
+            <h1 class="display-1">404</h1>
+            <h2 class="mb-4">Page Not Found</h2>
+            <p class="mb-5">
+                We're sorry, the page you have looked for does not exist in our
+                website! Maybe go to our home page or try to use a search?
+            </p>
+            <a href="/" class="btn">Go Back To Home</a>
+        </div>
+    </section>
+</MainLayout>
+
+<style lang="scss">
+    .error-section {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 100px 0;
+    }
+
+    .display-1 {
+        font-size: 8rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0;
+        line-height: 1;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 1.2rem;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto 40px;
+    }
+</style>

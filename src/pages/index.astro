@@ -1,16 +1,441 @@
 ---
-
+import "../styles/global.scss";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>360 Events Films - Welcome</title>
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="welcome-container">
+            <!-- Animated particles background -->
+            <div class="particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+
+            <!-- Decorative floral accent -->
+            <div class="floral-accent floral-top"></div>
+            <div class="floral-accent floral-bottom"></div>
+
+            <div class="content">
+                <div class="logo-container">
+                    <img
+                        src="/img/Logo_360_events_films.png"
+                        alt="360 Events Films"
+                        class="logo"
+                    />
+                </div>
+                <h1 class="title">Welcome / Bienvenido</h1>
+                <p class="subtitle">
+                    Select your language / Selecciona tu idioma
+                </p>
+
+                <div class="language-options">
+                    <a href="/es/" class="btn btn-welcome">
+                        <span class="lang-name">Español</span>
+                    </a>
+                    <a href="/en/" class="btn btn-welcome">
+                        <span class="lang-name">English</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <style lang="scss">
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: var(--font-primary, "Open Sans", sans-serif);
+                background-color: var(--bg-color, #fdfcfa);
+                color: var(--text-color, #4a4a4a);
+                overflow: hidden;
+            }
+
+            .welcome-container {
+                position: relative;
+                height: 100vh;
+                height: 100dvh;
+                width: 100vw;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                background: linear-gradient(
+                    135deg,
+                    var(--bg-color, #fdfcfa) 0%,
+                    var(--bg-cream, #f8f6f2) 25%,
+                    var(--bg-soft, #f5f3ef) 50%,
+                    var(--bg-cream, #f8f6f2) 75%,
+                    var(--bg-color, #fdfcfa) 100%
+                );
+
+                /* Subtle radial glow - warm accent */
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 120%;
+                    height: 120%;
+                    transform: translate(-50%, -50%);
+                    background: radial-gradient(
+                        ellipse at center,
+                        rgba(197, 184, 156, 0.15) 0%,
+                        transparent 60%
+                    );
+                    z-index: 0;
+                }
+            }
+
+            /* Floating particles animation */
+            .particles {
+                position: absolute;
+                inset: 0;
+                overflow: hidden;
+                z-index: 1;
+            }
+
+            .particle {
+                position: absolute;
+                width: 6px;
+                height: 6px;
+                background: rgba(197, 184, 156, 0.5);
+                border-radius: 50%;
+                animation: float 15s infinite ease-in-out;
+
+                &:nth-child(1) {
+                    left: 10%;
+                    top: 20%;
+                    animation-delay: 0s;
+                    animation-duration: 12s;
+                }
+                &:nth-child(2) {
+                    left: 25%;
+                    top: 60%;
+                    animation-delay: 2s;
+                    animation-duration: 18s;
+                }
+                &:nth-child(3) {
+                    left: 50%;
+                    top: 30%;
+                    animation-delay: 4s;
+                    animation-duration: 14s;
+                }
+                &:nth-child(4) {
+                    left: 70%;
+                    top: 70%;
+                    animation-delay: 1s;
+                    animation-duration: 16s;
+                }
+                &:nth-child(5) {
+                    left: 85%;
+                    top: 40%;
+                    animation-delay: 3s;
+                    animation-duration: 13s;
+                }
+                &:nth-child(6) {
+                    left: 15%;
+                    top: 80%;
+                    animation-delay: 5s;
+                    animation-duration: 17s;
+                }
+                &:nth-child(7) {
+                    left: 60%;
+                    top: 10%;
+                    animation-delay: 2.5s;
+                    animation-duration: 15s;
+                }
+                &:nth-child(8) {
+                    left: 40%;
+                    top: 85%;
+                    animation-delay: 1.5s;
+                    animation-duration: 19s;
+                }
+            }
+
+            @keyframes float {
+                0%,
+                100% {
+                    transform: translateY(0) translateX(0) scale(1);
+                    opacity: 0.3;
+                }
+                25% {
+                    transform: translateY(-30px) translateX(10px) scale(1.2);
+                    opacity: 0.6;
+                }
+                50% {
+                    transform: translateY(-15px) translateX(-10px) scale(0.8);
+                    opacity: 0.4;
+                }
+                75% {
+                    transform: translateY(-40px) translateX(5px) scale(1.1);
+                    opacity: 0.5;
+                }
+            }
+
+            /* Floral decorative accents */
+            .floral-accent {
+                position: absolute;
+                width: 300px;
+                height: 300px;
+                background: radial-gradient(
+                    circle,
+                    rgba(139, 154, 122, 0.08) 0%,
+                    transparent 70%
+                );
+                border-radius: 50%;
+                z-index: 0;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    inset: 20%;
+                    border: 1px solid rgba(139, 154, 122, 0.15);
+                    border-radius: 50%;
+                }
+            }
+
+            .floral-top {
+                top: -100px;
+                right: -100px;
+
+                @media (max-width: 768px) {
+                    width: 180px;
+                    height: 180px;
+                    top: -60px;
+                    right: -60px;
+                }
+            }
+
+            .floral-bottom {
+                bottom: -100px;
+                left: -100px;
+
+                @media (max-width: 768px) {
+                    width: 180px;
+                    height: 180px;
+                    bottom: -60px;
+                    left: -60px;
+                }
+            }
+
+            .content {
+                position: relative;
+                z-index: 2;
+                text-align: center;
+                padding: 2rem;
+                animation: fadeIn 1.2s ease-out;
+                max-width: 500px;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                @media (max-width: 768px) {
+                    padding: 1.5rem;
+                }
+
+                @media (max-width: 480px) {
+                    padding: 1rem;
+                }
+            }
+
+            .logo-container {
+                margin-bottom: 2rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                /* Dark circular background for logo visibility */
+                background: linear-gradient(
+                    135deg,
+                    #2a2520 0%,
+                    #1a1814 50%,
+                    #2a2520 100%
+                );
+                padding: 2rem;
+                border-radius: 50%;
+                aspect-ratio: 1;
+                box-shadow:
+                    0 4px 20px rgba(0, 0, 0, 0.15),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(197, 184, 156, 0.2);
+
+                .logo {
+                    height: 90px;
+                    width: auto;
+                    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
+                    transition: transform 0.4s ease;
+
+                    &:hover {
+                        transform: scale(1.05);
+                    }
+
+                    @media (max-width: 768px) {
+                        height: 60px;
+                    }
+
+                    @media (max-width: 480px) {
+                        height: 45px;
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    margin-bottom: 1.25rem;
+                    padding: 1.5rem;
+                }
+
+                @media (max-width: 480px) {
+                    margin-bottom: 0.75rem;
+                    padding: 1.1rem;
+                }
+            }
+
+            .title {
+                font-family: var(--font-secondary, "Playfair Display", serif);
+                font-size: clamp(1.4rem, 3.5vw, 2.5rem);
+                margin-bottom: 0.5rem;
+                color: var(--text-color, #4a4a4a);
+                letter-spacing: 2px;
+                font-weight: 500;
+                width: 100%;
+
+                @media (max-width: 480px) {
+                    font-size: 1.25rem;
+                    letter-spacing: 1px;
+                    margin-bottom: 0.35rem;
+                }
+            }
+
+            .subtitle {
+                font-size: clamp(0.8rem, 1.8vw, 1rem);
+                color: var(--text-light, #6b6b6b);
+                margin-bottom: 2rem;
+                font-weight: 400;
+                letter-spacing: 1px;
+                width: 100%;
+
+                @media (max-width: 768px) {
+                    margin-bottom: 1.5rem;
+                }
+
+                @media (max-width: 480px) {
+                    font-size: 0.75rem;
+                    margin-bottom: 1.25rem;
+                    letter-spacing: 0.5px;
+                }
+            }
+
+            .language-options {
+                display: flex;
+                gap: 1.25rem;
+                justify-content: center;
+                align-items: center;
+
+                @media (max-width: 480px) {
+                    flex-direction: column;
+                    gap: 0.65rem;
+                    padding: 0;
+                }
+            }
+
+            /* Button styling matching home page */
+            .btn-welcome {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 14px 36px;
+                background: var(--accent-color, #8b9a7a);
+                color: #fff;
+                text-decoration: none;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+                font-size: 0.9rem;
+                font-weight: 500;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                position: relative;
+                overflow: hidden;
+                min-width: 160px;
+                border-radius: var(--border-radius, 25px);
+                border: 2px solid transparent;
+                box-shadow: 0 4px 15px rgba(139, 154, 122, 0.3);
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: -100%;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(
+                        90deg,
+                        transparent,
+                        rgba(255, 255, 255, 0.2),
+                        transparent
+                    );
+                    transition: 0.5s;
+                }
+
+                &:hover {
+                    background: var(--accent-light, #a8b89a);
+                    transform: translateY(-3px);
+                    box-shadow: 0 8px 25px rgba(139, 154, 122, 0.4);
+
+                    &::before {
+                        left: 100%;
+                    }
+                }
+
+                &:active {
+                    transform: translateY(-1px);
+                }
+
+                @media (max-width: 768px) {
+                    padding: 10px 26px;
+                    font-size: 0.8rem;
+                    min-width: 130px;
+                }
+
+                @media (max-width: 480px) {
+                    width: auto;
+                    padding: 8px 22px;
+                    font-size: 0.7rem;
+                    min-width: 110px;
+                    letter-spacing: 1px;
+                }
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(15px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        </style>
+    </body>
 </html>
